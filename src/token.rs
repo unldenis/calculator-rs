@@ -6,7 +6,7 @@ pub struct Token {
     pub value : Option<f64>
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq, Clone, Copy)]
 pub enum TokenType {
     Number,
     Plus,

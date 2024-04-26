@@ -9,7 +9,7 @@ use crate::token::TokenType;
 pub struct Scanner<'a> {
     input : &'a str,
     current : usize,
-    token_list : Vec<Token>,
+    pub token_list : Vec<Token>,
 }
 
 

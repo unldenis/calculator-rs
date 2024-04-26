@@ -1,16 +1,21 @@
 use std::fmt::{self, write};
 
+use crate::token::TokenType;
+
 #[derive(Debug)]
 pub enum CalculatorError {
     OperatorNotAvailable(char),
 
     InvalidCharacter(char, usize),
 
-    EndOfFile()
+    EndOfFile(),
+
+    ClosingParenthesisNotFound(usize, TokenType),
+    NumberExpected(usize, TokenType),
 }
 
 
-impl fmt::Display for CalculatorError {
+impl fmt::Display for CalculatorError{
 
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match *self {
@@ -23,6 +28,14 @@ impl fmt::Display for CalculatorError {
             CalculatorError::EndOfFile() => {
                 write!(f, "End of file unexpected error")
             }
+            CalculatorError::ClosingParenthesisNotFound(index, t_type) => {
+                write!(f,  "Closing parenthesis expected at '{}' index but found '{:?}'.", index, t_type)
+            }
+
+            CalculatorError::NumberExpected(index, t_type) => {
+                write!(f,  "Number expected at '{}' index but found '{:?}'.", index, t_type)
+            }
+           
         }
     }
 }
