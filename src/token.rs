@@ -2,8 +2,8 @@ use crate::errors::CalculatorError;
 
 #[derive(Debug)]
 pub struct Token {
-    t_type: TokenType,
-    value : Option<f64>
+    pub t_type: TokenType,
+    pub value : Option<f64>
 }
 
 #[derive(Debug)]
@@ -19,7 +19,7 @@ pub enum TokenType {
 }
 
 impl TokenType {
-    fn from_char(item: char) -> Result<Self, CalculatorError> {
+    pub fn from_char(item: char) -> Result<Self, CalculatorError> {
         
         match item {
             '+' => Ok(TokenType::Plus),

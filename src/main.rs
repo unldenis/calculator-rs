@@ -1,6 +1,7 @@
 use std::{error::Error, fmt::format};
 use std::io::Write;
 use errors::CalculatorError;
+use scanner::Scanner;
 
 mod scanner;
 mod errors;
@@ -24,7 +25,7 @@ fn main() {
         }
         print!("{}", input);
         input.pop();
-        let mut scanner = scanner::Scanner::new(&input);
+        let mut scanner = Scanner::new(&input);
 
         match scanner.parse() {
             Err(err) => println!("error parsing: {}", err),
